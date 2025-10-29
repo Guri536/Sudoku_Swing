@@ -1,16 +1,12 @@
-package sudoku;
+package sudoku.game;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.io.Serial;
 import java.util.Arrays;
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.text.BadLocationException;
-
-import static java.io.IO.println;
 
 public class GameBoardPanel extends JPanel {
     @Serial

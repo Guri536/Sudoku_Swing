@@ -1,4 +1,4 @@
-package sudoku;
+package sudoku.game;
 
 /**
  * An enumeration of constants to represent the status of each cell.

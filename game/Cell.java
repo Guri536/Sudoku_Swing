@@ -1,11 +1,9 @@
-package sudoku;
+package sudoku.game;
 
 import java.awt.*;
 import java.io.Serial;
 import javax.swing.*;
 import javax.swing.text.*;
-
-import static java.io.IO.println;
 
 public class Cell extends JTextField {
     @Serial
