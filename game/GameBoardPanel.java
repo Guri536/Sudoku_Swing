@@ -2,15 +2,12 @@ package sudoku.game;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.Serial;
 import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 public class GameBoardPanel extends JPanel {
-    @Serial
-    private static final long serialVersionUID = 1L;
 
     public static final int CELL_SIZE = 60;
     public static final int BOARD_WIDTH = CELL_SIZE * SudokuConstants.GRID_SIZE;
@@ -79,7 +76,7 @@ public class GameBoardPanel extends JPanel {
     {
         if(state == null) state = "";
         if (scoreLabel != null) {
-            scoreLabel.setText("Score: " + score + " " + state);
+            scoreLabel.setText("<html> Score: " + score + " " + state + "</html>");
         }
     }
 
@@ -150,15 +147,15 @@ public class GameBoardPanel extends JPanel {
 
     private void incrementScore(){
         score += 100;
-        scoreLabel.setBackground(Cell.BG_CORRECT_GUESS.brighter());
-        updateScoreLabel("(+100)");
+//        scoreLabel.setForeground(Cell.BG_CORRECT_GUESS.brighter());
+        updateScoreLabel("<font color='green'>+100</font>");
     }
 
     private void decrementScore(){
         score -= 25;
         score = Math.max(0, score);
-        scoreLabel.setBackground(Cell.BG_WRONG_GUESS.brighter());
-        updateScoreLabel("(-25)");
+//        scoreLabel.setForeground(Cell.BG_WRONG_GUESS.brighter());/
+        updateScoreLabel("<font color='red'>-25</font>");
     }
 
     private record cellFocusManager(Cell cell) implements FocusListener {

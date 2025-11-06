@@ -34,7 +34,7 @@ cd sudoku_swing
 3. Compile the code:  
    Navigate to the sudoku/game directory where the .java files are located.  
 ```bash
-cd sudoku/game  
+cd game  
 javac \*.java
 ```
 
@@ -42,7 +42,7 @@ javac \*.java
    Go back up one directory (to be in the main project folder) and run the SudokuMain class:  
 ```bash
 cd ..  
-java sudoku.game.SudokuMain
+java game.SudokuMain
 ```
    This will launch the Sudoku game window.
 

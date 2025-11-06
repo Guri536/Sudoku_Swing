@@ -1,14 +1,10 @@
 package sudoku.game;
 
 import java.awt.*;
-import java.io.Serial;
 import javax.swing.*;
 import javax.swing.text.*;
 
 public class Cell extends JTextField {
-    @Serial
-    private static final long serialVersionUID = 1L;
-
     public static final Color BG_GIVEN = new Color(240, 240, 240);
     public static final Color FG_GIVEN = Color.BLACK;
     public static final Color FG_NOT_GIVEN = Color.GRAY;
@@ -60,7 +56,6 @@ public class Cell extends JTextField {
         }
     }
 
-    // This class filters input to allow only a single digit from 1-9
     private static class SudokuInputFilter extends DocumentFilter {
         @Override
         public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {

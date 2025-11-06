@@ -2,23 +2,17 @@ package sudoku.game;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.Serial;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-/**
- * The main Sudoku program
- */
 public class SudokuMain extends JFrame {
-    @Serial
-    private static final long serialVersionUID = 1L;
-
-    JLabel scoreLabel = new JLabel();
     GameBoardPanel board = new GameBoardPanel();
     JButton btnNewGame = new JButton("New Game");
 
     public SudokuMain() {
         Container cp = getContentPane();
+        JLabel scoreLabel = new JLabel();
+
         cp.setLayout(new BorderLayout());
         cp.add(board, BorderLayout.CENTER);
 

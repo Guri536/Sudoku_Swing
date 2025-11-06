@@ -75,9 +75,7 @@ public class PuzzleGenerator {
                         board[i][j] = r;
                         flag[r] = false;
                     }
-                    // for the second column of the middle block, after randomly
-                    // filling numbers, checks if the next column has 3 candidates.
-                    // If not, revert and try again.
+
                     if (k != 3 || j != 1) break;
                     validate(board, k, j + 1, flag);
                     if (numOfcandidates(flag) == 3) break;
