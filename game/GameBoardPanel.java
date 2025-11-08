@@ -2,6 +2,7 @@ package sudoku.game;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.lang.annotation.Documented;
 import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -54,8 +55,8 @@ public class GameBoardPanel extends JPanel {
     public void newGame() {
         isACtive = false;
         puzzle.newPuzzle();
-        System.out.println(Arrays.deepToString(puzzle.numbers));
-        System.out.println(Arrays.deepToString(puzzle.isGiven));
+//        System.out.println(Arrays.deepToString(puzzle.numbers));
+//        System.out.println(Arrays.deepToString(puzzle.isGiven));
 
         score = 0;
         updateScoreLabel(null);
@@ -139,7 +140,33 @@ public class GameBoardPanel extends JPanel {
                 sourceCell.paint();
 
                 if (isSolved()) {
-                    JOptionPane.showMessageDialog(null, "Congratulations! You solved the puzzle!");
+                    isACtive = false;
+
+                    Window parentWindow = SwingUtilities.getWindowAncestor(GameBoardPanel.this);
+
+                    String message = "<html><h2>Congratulations!</h2>"
+                            + "<p>You solved the puzzle!</p>"
+                            + "<p><b>Your final score is: " + score + "</b></p>"
+                            + "<hr><p>Would you like to play a new game?</p></html>";
+
+                    String[] options = {"Play Again", "Exit"};
+
+                    int choice = JOptionPane.showOptionDialog(
+                            parentWindow,
+                            message,
+                            "You Won!",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            options,
+                            null
+                    );
+
+                    if(choice == 1) {
+                        if (parentWindow != null) {
+                            parentWindow.dispose();
+                        }
+                    }
                 }
             }
         }

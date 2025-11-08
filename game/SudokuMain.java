@@ -2,6 +2,10 @@ package sudoku.game;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -35,12 +39,39 @@ public class SudokuMain extends JFrame {
             }
         });
 
+        InputMap inputMap = ((JPanel) cp).getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap actionMap = ((JPanel) cp).getActionMap();
+
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "takeCapture");
+        actionMap.put("takeCapture", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                captureImage();
+            }
+        });
+
         board.newGame();
 
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Sudoku");
         setVisible(true);
+    }
+
+    public void captureImage(){
+        try {
+            Robot robot = new Robot();
+
+            Rectangle captureArea = this.getBounds();
+            BufferedImage screenCapture = robot.createScreenCapture(captureArea);
+            File outputFile = new File("screen_capture.png");
+            ImageIO.write(screenCapture, "png", outputFile);
+            System.out.println("Full screen capture saved to: " +
+                        outputFile.getAbsolutePath());
+
+        } catch (AWTException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
@@ -51,4 +82,5 @@ public class SudokuMain extends JFrame {
             }
         });
     }
+
 }

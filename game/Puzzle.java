@@ -27,6 +27,8 @@ public class Puzzle {
         }
     }
 
+
+
     private boolean[][] randomOperate() {
         boolean[][] clues = new boolean[9][9];
 
@@ -34,7 +36,7 @@ public class Puzzle {
 
         for(int i = 0; i < 9; i++){
             for(int j = 0; j < 9; j++){
-                clues[i][j] = (rand.nextInt(1, 11) < 6);
+                clues[i][j] = (rand.nextInt(1, 101) < 45);
             }
         }
 
